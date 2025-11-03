@@ -1,12 +1,10 @@
-public void tampilkanDetail();
-
-public class tiket {
+public class Tiket {
     private Film film;
     private String jamTayang;
     private Kursi kursi;
     private double totalHarga;
 
-    public tiket(Film film, String jamTayang, Kursi kursi, double totalHarga) {
+    public Tiket(Film film, String jamTayang, Kursi kursi, double totalHarga) {
         this.film = film;
         this.jamTayang = jamTayang;
         this.kursi = kursi;
@@ -54,7 +52,7 @@ public class tiket {
             System.out.println("Durasi       : " + film.getDurasi() + " menit");
             System.out.println("Harga Film   : Rp" + film.getHarga());
         }
-        System.out.println("Jam Tayang   : " + jamTayang);
+        System.out.println("Jam Tayang   : " + this.getJamTayang());
 
         if (kursi != null) {
             System.out.println("Nomor Kursi  : " + kursi.getNomorKursi());
