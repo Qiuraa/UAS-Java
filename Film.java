@@ -4,71 +4,43 @@ public class Film {
     private int idFilm;
     private String judul;
     private String genre;
-    private int durasi; // dalam menit
+    private int durasi;
     private double harga;
-    private ArrayList<Kursi> daftarKursi; // relasi 1 film memiliki banyak kursi
+    private ArrayList<Kursi> daftarKursi;
+    private Kursi[][] kursiBioskop;
 
-    public Film(int idFilm, String judul, String genre, int durasi, double harga) {
+    // Konstruktor: input jumlah baris & kolom sebagai int
+    public Film(int idFilm, String judul, String genre, int durasi, double harga, int baris, int kolom) {
         this.idFilm = idFilm;
         this.judul = judul;
         this.genre = genre;
         this.durasi = durasi;
         this.harga = harga;
+
         this.daftarKursi = new ArrayList<>();
-    }
+        this.kursiBioskop = new Kursi[baris][kolom];
 
-    // === Getter & Setter ===
-    public int getIdFilm() {
-        return idFilm;
+        // Generate kursi otomatis
+        for (int i = 0; i < baris; i++) {
+            for (int j = 0; j < kolom; j++) {
+                String nomor = (i+1) + "-" + (j+1);
+                Kursi kursi = new Kursi(nomor, this);
+                kursiBioskop[i][j] = kursi;
+                daftarKursi.add(kursi);
+            }
+        }
     }
-
-    public void setIdFilm(int idFilm) {
-        this.idFilm = idFilm;
-    }
-
     public String getJudul() {
         return judul;
     }
-
-    public void setJudul(String judul) {
-        this.judul = judul;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getDurasi() {
-        return durasi;
-    }
-
-    public void setDurasi(int durasi) {
-        this.durasi = durasi;
-    }
-
-    public double getHarga() {
-        return harga;
-    }
-
-    public void setHarga(double harga) {
-        this.harga = harga;
-    }
-
     public ArrayList<Kursi> getDaftarKursi() {
         return daftarKursi;
     }
 
-    // === Method tambahan sesuai relasi UML ===
-    public void tambahKursi(Kursi kursi) {
-        daftarKursi.add(kursi);
-        System.out.println("Kursi " + kursi.getNomorKursi() + " ditambahkan ke film " + this.judul);
+    public Kursi[][] getKursiBioskop() {
+        return kursiBioskop;
     }
 
-    // === Method tampilkan detail ===
     public void tampilkanDetail() {
         System.out.println("===== Detail Film =====");
         System.out.println("ID Film     : " + idFilm);
