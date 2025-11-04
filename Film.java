@@ -33,6 +33,10 @@ public class Film {
     public String getJudul() {
         return judul;
     }
+
+    public double getHarga() {
+        return harga;
+    }
     public ArrayList<Kursi> getDaftarKursi() {
         return daftarKursi;
     }

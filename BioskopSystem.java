@@ -105,7 +105,7 @@ public class BioskopSystem {
         }
     }
     
-    
+
     public void beliTiket(Scanner scanner) {
         
         if (daftarFilm.isEmpty()) {
@@ -168,6 +168,11 @@ public class BioskopSystem {
             System.out.println("Kursi sudah dipesan. Silakan pilih kursi lain.");
             return;
         }
+        kursiTerpilih.setTersedia(false);
+        Tiket tiketBaru = new Tiket(filmTerpilih, "20:00", kursiTerpilih, filmTerpilih.getHarga());
+        daftarTiket.add(tiketBaru);
+        currentUser.tambahTiket(tiketBaru);
+        System.out.println("Tiket berhasil dibeli untuk film " + filmTerpilih.getJudul() + " pada kursi " + kursiTerpilih.getNomorKursi() + ".");
 
     }
 
