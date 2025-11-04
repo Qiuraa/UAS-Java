@@ -60,6 +60,6 @@ public class Tiket {
 
         System.out.println("Total Harga  : Rp" + totalHarga);
         System.out.println("=========================");
-    }
+    }
 
 }

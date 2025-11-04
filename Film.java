@@ -37,6 +37,19 @@ public class Film {
     public double getHarga() {
         return harga;
     }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getDurasi() {
+        return durasi;
+    }
+
+    public int getIdFilm() {
+        return idFilm;
+    }
+    
     public ArrayList<Kursi> getDaftarKursi() {
         return daftarKursi;
     }
