@@ -71,7 +71,7 @@ public class BioskopSystem {
         System.out.println("Masukkan harga tiket film:");
         double harga = Double.parseDouble(scanner.nextLine());
 
-        Film filmBaru = new Film(judul, genre, durasi, harga);
+        Film filmBaru = new Film(judul, genre, durasi, harga,5,5); //menambah studio untuk setiap film (assign kolom dan baris)
         daftarFilm.add(filmBaru);
         System.out.println("Film " + judul + " berhasil ditambahkan.");
     }

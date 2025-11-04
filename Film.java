@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Film {
+    private static int idCounter = 1;
     private int idFilm;
     private String judul;
     private String genre;
@@ -10,8 +11,8 @@ public class Film {
     private Kursi[][] kursiBioskop;
 
     // Konstruktor: input jumlah baris & kolom sebagai int
-    public Film(int idFilm, String judul, String genre, int durasi, double harga, int baris, int kolom) {
-        this.idFilm = idFilm;
+    public Film(String judul, String genre, int durasi, double harga, int baris, int kolom) {
+        this.idFilm = idCounter++;
         this.judul = judul;
         this.genre = genre;
         this.durasi = durasi;
@@ -49,7 +50,7 @@ public class Film {
     public int getIdFilm() {
         return idFilm;
     }
-    
+
     public ArrayList<Kursi> getDaftarKursi() {
         return daftarKursi;
     }
