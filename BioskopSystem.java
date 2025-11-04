@@ -6,19 +6,17 @@ public class BioskopSystem {
     private ArrayList<Film> daftarFilm;
     private ArrayList<Tiket> daftarTiket;
     private User currentUser;
-    private Kursi[][] kursiBioskop;
     public static final String RESET = "\u001B[0m";
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
 
 
-    public BioskopSystem(ArrayList<User> daftarUsers, ArrayList<Film> daftarFilm, ArrayList<Tiket> daftarTiket, Kursi[][] kursiBioskop,
+    public BioskopSystem(ArrayList<User> daftarUsers, ArrayList<Film> daftarFilm, ArrayList<Tiket> daftarTiket,
             User currentUser) {
         this.daftarUsers = daftarUsers;
         this.daftarFilm = daftarFilm;
         this.daftarTiket = daftarTiket;
         this.currentUser = currentUser;
-        this.kursiBioskop = kursiBioskop;
     }
 
     public ArrayList<User> getDaftarUsers() {
@@ -104,7 +102,9 @@ public class BioskopSystem {
         
         }
     }
-    
+    public void lihatRiwayatPembelian() {
+        currentUser.tampilRiwayat();
+    }
 
     public void beliTiket(Scanner scanner) {
         
