@@ -105,6 +105,7 @@ public class BioskopSystem {
         }
     }
     
+    
     public void beliTiket(Scanner scanner) {
         
         if (daftarFilm.isEmpty()) {
