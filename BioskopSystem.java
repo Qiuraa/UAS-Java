@@ -10,7 +10,6 @@ public class BioskopSystem {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
 
-
     public BioskopSystem(ArrayList<User> daftarUsers, ArrayList<Film> daftarFilm, ArrayList<Tiket> daftarTiket,
             User currentUser) {
         this.daftarUsers = daftarUsers;
