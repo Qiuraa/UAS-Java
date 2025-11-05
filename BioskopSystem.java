@@ -42,6 +42,8 @@ public class BioskopSystem {
     public void mulai() {
         System.out.println("Selamat datang di Sistem Bioskop!");
         System.out.println("Silakan login untuk melanjutkan.");
+        System.out.println("------------------------------");
+        System.out.println();
     }
 
     public boolean login(String inputUsername, String inputPassword) {
@@ -58,13 +60,19 @@ public class BioskopSystem {
     return false; 
 }
     public void tambahFilm(Scanner scanner) {
-        System.out.println("Masukkan judul film:");
+        System.out.print("Masukkan judul film :");
         String judul = scanner.nextLine();
-        System.out.println("Masukkan genre film:");
+
+        System.out.println();
+        System.out.print("Masukkan genre film :");
         String genre = scanner.nextLine();
-        System.out.println("Masukkan durasi film (dalam menit):");
+        
+        System.out.println();
+        System.out.print("Masukkan durasi film (dalam menit) :");
         int durasi = Integer.parseInt(scanner.nextLine());
-        System.out.println("Masukkan harga tiket film:");
+        
+        System.out.println();
+        System.out.print("Masukkan harga tiket film :");
         double harga = Double.parseDouble(scanner.nextLine());
 
         Film filmBaru = new Film(judul, genre, durasi, harga,5,5); //menambah studio untuk setiap film (assign kolom dan baris)
@@ -85,6 +93,7 @@ public class BioskopSystem {
         System.out.println("2. Lihat Daftar Film");
         System.out.println("3. Logout");
 
+        System.out.print("Pilih menu : ");
         String pilihan = scanner.nextLine();
         switch (pilihan) {
             case "1":

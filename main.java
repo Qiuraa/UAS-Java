@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -30,9 +29,9 @@ public class Main {
             boolean flag = true;
             while (flag == true) {
                 if (bioskopSystem.getCurrentUser().getRole().equals("admin")) {
-                System.out.println("Anda masuk sebagai admin.");
+                    System.out.println("Anda masuk sebagai admin.");
 
-                bioskopSystem.menuAdmin(scanner);
+                    bioskopSystem.menuAdmin(scanner);
 
                 if (bioskopSystem.getCurrentUser() == null) {
                     flag = false;
