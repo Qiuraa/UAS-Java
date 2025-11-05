@@ -10,12 +10,11 @@ public class BioskopSystem {
     public static final String RED = "\u001B[31m";
     public static final String GREEN = "\u001B[32m";
 
-    public BioskopSystem(ArrayList<User> daftarUsers, ArrayList<Film> daftarFilm, ArrayList<Tiket> daftarTiket,
-            User currentUser) {
-        this.daftarUsers = daftarUsers;
-        this.daftarFilm = daftarFilm;
-        this.daftarTiket = daftarTiket;
-        this.currentUser = currentUser;
+    public BioskopSystem() {
+        this.daftarUsers = new ArrayList<>();
+        this.daftarFilm = new ArrayList<>();
+        this.daftarTiket = new ArrayList<>();
+        this.currentUser = null;
     }
 
     public ArrayList<User> getDaftarUsers() {
@@ -97,7 +96,10 @@ public class BioskopSystem {
                 break;
             
             case "3":
+                System.out.println("Logout berhasil!");
+                setCurrentUser(null);
                 return;
+                
         
         }
     }
@@ -215,6 +217,8 @@ public class BioskopSystem {
                 break;
             
             case "4":
+                System.out.println("Logout berhasil!");
+                setCurrentUser(null);
                 return;
         
         }
