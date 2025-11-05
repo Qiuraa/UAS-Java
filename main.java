@@ -28,19 +28,22 @@ public class Main {
 
             boolean flag = true;
             while (flag == true) {
+                if (bioskopSystem.getCurrentUser() == null) {
+                    break;
+                }
                 if (bioskopSystem.getCurrentUser().getRole().equals("admin")) {
                     System.out.println("Anda masuk sebagai admin.");
 
                     bioskopSystem.menuAdmin(scanner);
 
-                if (bioskopSystem.getCurrentUser() == null) {
-                    flag = false;
+                    if (bioskopSystem.getCurrentUser() == null) {
+                        flag = false;
+
+                    }
 
                 }
 
-                }
-
-                else {
+                else if (bioskopSystem.getCurrentUser().getRole().equals("customer")) {
                     System.out.println("Selamat datang, " + bioskopSystem.getCurrentUser().getUsername() + "!");
 
                     bioskopSystem.menuUser(scanner);
@@ -49,6 +52,11 @@ public class Main {
                         flag = false;
                     }
 
+                }
+
+                else {
+                    System.out.println("Gagal masuk. Silakan coba lagi.");
+                    flag = false;
                 }
             }
         }

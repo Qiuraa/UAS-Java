@@ -61,19 +61,65 @@ public class BioskopSystem {
 }
     public void tambahFilm(Scanner scanner) {
         System.out.print("Masukkan judul film :");
-        String judul = scanner.nextLine();
+
+        String judul;
+        do {
+            judul = scanner.nextLine();
+            if (judul.trim().isEmpty()) {
+                System.out.print("Judul film tidak boleh kosong. Silakan masukkan judul film :");
+            }
+        } while (judul.trim().isEmpty());
 
         System.out.println();
         System.out.print("Masukkan genre film :");
-        String genre = scanner.nextLine();
+
+        String genre;
+        do {
+            genre = scanner.nextLine();
+            if (genre.trim().isEmpty()) {
+                System.out.print("Genre film tidak boleh kosong. Silakan masukkan genre film :");
+            }
+        } while (genre.trim().isEmpty());
         
         System.out.println();
         System.out.print("Masukkan durasi film (dalam menit) :");
-        int durasi = Integer.parseInt(scanner.nextLine());
+
+        int durasi = 0;
+        do {
+            try {
+            durasi = Integer.parseInt(scanner.nextLine());
+
+            if (durasi <= 0) {
+                System.out.print("Durasi film harus lebih dari 0. Silakan masukkan durasi film (dalam menit) :");
+            }
+            
+        } catch (NumberFormatException e) {
+            System.out.println("Input tidak valid. Durasi dalam menit harus berupa angka.");
+        } catch (Exception e) {
+            System.out.println("Input tidak valid. Durasi dalam menit harus berupa angka.");
+        }
+        } while (durasi <= 0);
+        
         
         System.out.println();
         System.out.print("Masukkan harga tiket film :");
-        double harga = Double.parseDouble(scanner.nextLine());
+
+        double harga = 0;
+        
+        do {
+            try {
+                harga = Double.parseDouble(scanner.nextLine());
+
+                if (harga <= 0) {
+                    System.out.print("Harga tiket harus lebih dari 0. Silakan masukkan harga tiket film :");
+                }
+                
+            } catch (NumberFormatException e) {
+                System.out.println("Input tidak valid. Harga tiket harus berupa angka.");
+            } catch (Exception e) {
+                System.out.println("Input tidak valid. Harga tiket harus berupa angka.");
+            }
+        } while (harga <= 0);
 
         Film filmBaru = new Film(judul, genre, durasi, harga,5,5); //menambah studio untuk setiap film (assign kolom dan baris)
         daftarFilm.add(filmBaru);
