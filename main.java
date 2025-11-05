@@ -12,9 +12,16 @@ public class Main {
             
             System.out.print("Masukkan username (ketik 'exit' untuk keluar) : ");
             String username = scanner.nextLine();
+
+            if (username.equals("exit")) {
+                System.out.println("Keluar dari sistem. Terima kasih!");
+                break;
+            }
+
             System.out.print("Masukkan password (ketik 'exit' untuk keluar) : ");
             String password = scanner.nextLine();
-            if (username.equals("exit") || password.equals("exit")) {
+
+            if (password.equals("exit")) {
                 System.out.println("Keluar dari sistem. Terima kasih!");
                 break;
             }
