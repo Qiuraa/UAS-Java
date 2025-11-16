@@ -257,6 +257,7 @@ public class BioskopSystem {
         System.out.println("3. Riwayat Pembelian");
         System.out.println("4. Logout");
 
+        System.out.print("Pilih menu : ");
         String pilihan = scanner.nextLine();
         switch (pilihan) {
             case "1":
@@ -275,7 +276,10 @@ public class BioskopSystem {
                 System.out.println("Logout berhasil!");
                 setCurrentUser(null);
                 return;
-        
+            
+            default:
+                System.out.println("Pilihan tidak valid.\n");
+            
         }
     }
 }
