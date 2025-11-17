@@ -5,7 +5,7 @@ public class BioskopSystem {
     private ArrayList<User> daftarUsers;
     private ArrayList<Film> daftarFilm;
     private ArrayList<Tiket> daftarTiket;
-    private User currentUser;
+    priv User currentUser;
     
     public static final String RESET = "\u001B[0m";
     public static final String RED = "\u001B[31m";
