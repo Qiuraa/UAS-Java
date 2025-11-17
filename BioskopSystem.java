@@ -59,6 +59,7 @@ public class BioskopSystem {
     System.out.println("Login gagal! Username atau password salah.");
     return false; 
 }
+
     public void tambahFilm(Scanner scanner) {
         System.out.print("Masukkan judul film :");
 
@@ -102,7 +103,7 @@ public class BioskopSystem {
         
         
         System.out.println();
-        System.out.print("Masukkan harga tiket film :");
+        System.out.print("Masukkan harga tiket film (tanpa '. atau ,' contoh 20000) :");
 
         double harga = 0;
         
