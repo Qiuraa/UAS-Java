@@ -124,6 +124,36 @@ public class BioskopSystem {
         System.out.println("Film " + judul + " berhasil ditambahkan.");
     }
 
+    public void hapusFilm(Scanner scanner) {
+    if (daftarFilm.isEmpty()) {
+        System.out.println("Tidak ada film yang dapat dihapus.");
+        return;
+    }
+
+    System.out.println("=== Hapus Film ===");
+    for (int i = 0; i < daftarFilm.size(); i++) {
+        System.out.println((i + 1) + ". " + daftarFilm.get(i).getJudul());
+    }
+
+    System.out.print("Pilih nomor film yang akan dihapus: ");
+    int pilihan = -1;
+    try {
+        pilihan = Integer.parseInt(scanner.nextLine());
+    } catch (NumberFormatException e) {
+        System.out.println("Input harus berupa angka.");
+        return;
+    }
+
+    if (pilihan < 1 || pilihan > daftarFilm.size()) {
+        System.out.println("Pilihan tidak valid.");
+        return;
+    }
+
+    Film filmDihapus = daftarFilm.remove(pilihan - 1);
+    System.out.println("Film \"" + filmDihapus.getJudul() + "\" berhasil dihapus!");
+    }
+
+
     public void lihatDaftarFilm() {
         System.out.println("=== Daftar Film ===");
         if (daftarFilm.isEmpty()) {
