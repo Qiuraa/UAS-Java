@@ -244,9 +244,13 @@ public class BioskopSystem {
             return;
         }
 
+        
+        double hargaFilm = filmTerpilih.getHarga();
         // Proses beli
         kursiTerpilih.setTersedia(false);
-        Tiket tiketBaru = new Tiket(filmTerpilih, "20:00", kursiTerpilih, filmTerpilih.getHarga());
+        Tiket tiketBaru = new TiketReguler(filmTerpilih, "20:00", kursiTerpilih, hargaFilm);
+        tiketBaru.hitungTotalHarga(filmTerpilih.getHarga());
+
         daftarTiket.add(tiketBaru);
         currentUser.tambahTiket(tiketBaru);
         System.out.println(GREEN + "Sukses! Tiket " + filmTerpilih.getJudul() + " kursi " + nomorKursi + " berhasil dibeli." + RESET);

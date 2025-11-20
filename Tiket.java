@@ -1,8 +1,8 @@
-public class Tiket {
-    private Film film;
-    private String jamTayang;
-    private Kursi kursi;
-    private double totalHarga;
+public abstract class Tiket {
+    protected Film film;
+    protected String jamTayang;
+    protected Kursi kursi;
+    protected double totalHarga;
 
     public Tiket(Film film, String jamTayang, Kursi kursi, double totalHarga) {
         this.film = film;
@@ -10,6 +10,8 @@ public class Tiket {
         this.kursi = kursi;
         this.totalHarga = totalHarga;
     }
+
+    public abstract double hitungTotalHarga(double hargaFilm);
 
     public Film getFilm() {
         return film;
