@@ -4,11 +4,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BioskopSystem bioskopSystem = new BioskopSystem();
+        
         while (true) {
             bioskopSystem.mulai();
             bioskopSystem.getDaftarUsers().add(new User("user1", "pass1", "customer"));
             bioskopSystem.getDaftarUsers().add(new User("admin", "adminpass", "admin"));
             
+            boolean buatAkun = false;
+            while (!buatAkun) {
+                System.out.print("Apakah Anda ingin membuat akun baru? (ya/tidak): ");
+                String response = scanner.nextLine().toLowerCase();
+                if (response.equals("ya")) {
+                    bioskopSystem.tambahUserBaru(scanner);
+                    buatAkun = true;
+                } else if (response.equals("tidak")) {
+                    buatAkun = true;
+                } else {
+                    System.out.println("Input tidak valid. Silakan jawab dengan 'ya' atau 'tidak'.");
+                }
+            }
+
             System.out.print("Masukkan username (ketik 'exit' untuk keluar) : ");
             String username = scanner.nextLine();
 

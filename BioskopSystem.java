@@ -50,7 +50,7 @@ public class BioskopSystem {
     }
 
     public void tambahUserBaru(Scanner scanner) {
-        System.out.println("\n=== Tambah User/Admin Baru ===");
+        System.out.println("\n=== Tambah User Baru ===");
         
         String username;
         while (true) {
@@ -79,17 +79,7 @@ public class BioskopSystem {
         System.out.print("Masukkan Password: ");
         String password = scanner.nextLine();
 
-        String role = "";
-        while (true) {
-            System.out.print("Masukkan Role (admin/customer): ");
-            String inputRole = scanner.nextLine().toLowerCase();
-            if (inputRole.equals("admin") || inputRole.equals("customer")) {
-                role = inputRole;
-                break;
-            } else {
-                System.out.println("Role tidak valid! Harus 'admin' atau 'customer'.");
-            }
-        }
+        String role = "customer";
 
         User newUser = new User(username, password, role);
         daftarUsers.add(newUser);
@@ -275,7 +265,7 @@ public class BioskopSystem {
 
     public void menuUser(Scanner scanner) {
         while(true) { 
-            System.out.println("\n=== Menu User (" + currentUser.getUsername() + ") ===");
+            System.out.println("\n=== Selamat Datang " + currentUser.getUsername() + " ===");
             System.out.println("1. Lihat Daftar Film");
             System.out.println("2. Beli Tiket");
             System.out.println("3. Riwayat Pembelian");
