@@ -210,7 +210,7 @@ public class BioskopSystem {
         try {
             pilihan = Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Input angka dong.");
+            System.out.println("Input harus berupa angka.");
             return;
         }
         
@@ -235,15 +235,7 @@ public class BioskopSystem {
             }
         }
 
-        if (kursiTerpilih == null) {
-            System.out.println("Nomor kursi tidak valid.");
-            return;
-        }
-        if (!kursiTerpilih.isTersedia()) {
-            System.out.println("Kursi sudah dipesan. Telat lu bang.");
-            return;
-        }
-
+        kursiTerpilih.pesan(kursiTerpilih.isTersedia());
         
         double hargaFilm = filmTerpilih.getHarga();
         // Proses beli

@@ -1,4 +1,4 @@
-public class Kursi {
+public class Kursi implements Reservasi {
     private String nomorKursi;
     private boolean tersedia;
     private Film film;
@@ -24,4 +24,15 @@ public class Kursi {
     public Film getFilm() {
         return film;
     }
+
+    @Override
+    public void pesan(boolean tersedia) {
+        if (tersedia) {
+            tersedia = false;
+            System.out.println("Kursi " + nomorKursi + " berhasil dipesan.");
+        } else {
+            System.out.println("Kursi " + nomorKursi + " sudah tidak tersedia.");
+        }
+    }
+
 }
