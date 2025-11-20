@@ -81,7 +81,7 @@ public class BioskopSystem {
 
         String role = "customer";
 
-        User newUser = new User(username, password, role);
+        User newUser = new Pelanggan(username, password);
         daftarUsers.add(newUser);
         System.out.println("Berhasil membuat user baru: " + username + " sebagai " + role);
     }

@@ -7,8 +7,8 @@ public class Main {
         
         while (true) {
             bioskopSystem.mulai();
-            bioskopSystem.getDaftarUsers().add(new User("user1", "pass1", "customer"));
-            bioskopSystem.getDaftarUsers().add(new User("admin", "adminpass", "admin"));
+            bioskopSystem.getDaftarUsers().add(new Pelanggan("user1", "pass1"));
+            bioskopSystem.getDaftarUsers().add(new Admin("admin", "adminpass"));
             
             boolean buatAkun = false;
             while (!buatAkun) {
