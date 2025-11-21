@@ -141,7 +141,56 @@ public class BioskopSystem {
 
         Film filmDihapus = daftarFilm.remove(pilihan - 1);
         System.out.println("Film \"" + filmDihapus.getJudul() + "\" berhasil dihapus!");
+    }
+
+    // === FITUR BARU: HAPUS USER ===
+    public void hapusUser(Scanner scanner) {
+        if (daftarUsers.isEmpty()) {
+            System.out.println("Tidak ada user dalam sistem.");
+            return;
         }
+
+        System.out.println("\n=== Hapus User ===");
+        for (int i = 0; i < daftarUsers.size(); i++) {
+            User u = daftarUsers.get(i);
+            // Cek biar admin gak hapus diri sendiri
+            if (u.getUsername().equals(currentUser.getUsername())) {
+                System.out.println(RED + (i + 1) + ". " + u.getUsername() + " (" + u.getRole() + ") - AKUN ANDA (TIDAK BISA DIHAPUS)" + RESET);
+            } else {
+                System.out.println((i + 1) + ". " + u.getUsername() + " (" + u.getRole() + ")");
+            }
+        }
+
+        System.out.print("Pilih nomor user yang akan dihapus (0 untuk batal): ");
+        int pilihan = -1;
+        try {
+            pilihan = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Input harus berupa angka.");
+            return;
+        }
+
+        if (pilihan == 0) {
+            System.out.println("Penghapusan user dibatalkan.");
+            return;
+        }
+
+        if (pilihan < 1 || pilihan > daftarUsers.size()) {
+            System.out.println("Pilihan tidak valid.");
+            return;
+        }
+
+        User userDihapus = daftarUsers.get(pilihan - 1);
+        
+        // Validasi lagi
+        if (userDihapus.getUsername().equals(currentUser.getUsername())) {
+            System.out.println(RED + "Gagal menghapus! Admin tidak dapat menghapus akunnya sendiri." + RESET);
+        } else {
+            daftarUsers.remove(pilihan - 1);
+            System.out.println(GREEN + "User \"" + userDihapus.getUsername() + "\" (" + userDihapus.getRole() + ") berhasil dihapus!" + RESET);
+        }
+    }
+    // ==============================
 
 
     public void lihatDaftarFilm() {
@@ -162,7 +211,8 @@ public class BioskopSystem {
             System.out.println("2. Lihat Daftar Film");
             System.out.println("3. Tambah User/Admin Baru");
             System.out.println("4. Hapus Film");
-            System.out.println("5. Logout");
+            System.out.println("5. Hapus User/Admin"); // <--- Menu Baru
+            System.out.println("6. Logout");
 
             System.out.print("Pilih menu : ");
             String pilihan = scanner.nextLine();
@@ -176,12 +226,13 @@ public class BioskopSystem {
                 case "3":
                     tambahUserBaru(scanner);
                     break;
-                
                 case "4":
                     hapusFilm(scanner);
                     break;
-
-                case "5":
+                case "5": // <--- Case Baru
+                    hapusUser(scanner);
+                    break;
+                case "6":
                     System.out.println("Logout berhasil!");
                     setCurrentUser(null);
                     return; 
@@ -234,18 +285,28 @@ public class BioskopSystem {
                 break;
             }
         }
-
-        kursiTerpilih.pesan(kursiTerpilih.isTersedia());
         
-        double hargaFilm = filmTerpilih.getHarga();
-        // Proses beli
-        kursiTerpilih.setTersedia(false);
-        Tiket tiketBaru = new TiketReguler(filmTerpilih, "20:00", kursiTerpilih, hargaFilm);
-        tiketBaru.hitungTotalHarga(filmTerpilih.getHarga());
-
-        daftarTiket.add(tiketBaru);
-        currentUser.tambahTiket(tiketBaru);
-        System.out.println(GREEN + "Sukses! Tiket " + filmTerpilih.getJudul() + " kursi " + nomorKursi + " berhasil dibeli." + RESET);
+        // Perbaikan kecil: Cek null dulu sebelum akses methodnya biar ga error
+        if (kursiTerpilih != null) {
+            kursiTerpilih.pesan(kursiTerpilih.isTersedia());
+            
+            // Proses beli cuma kalau kursi tersedia
+            if (!kursiTerpilih.isTersedia()) { 
+                // Di method pesan() sudah diubah jadi false, tapi kita cek logika
+                 // Note: logic di code aslimu agak unik, method pesan() mengubah status jadi false kalau true.
+                 // Jadi disini anggap sudah dipesan.
+                 
+                double hargaFilm = filmTerpilih.getHarga();
+                Tiket tiketBaru = new TiketReguler(filmTerpilih, "20:00", kursiTerpilih, hargaFilm);
+                tiketBaru.hitungTotalHarga(filmTerpilih.getHarga());
+    
+                daftarTiket.add(tiketBaru);
+                currentUser.tambahTiket(tiketBaru);
+                System.out.println(GREEN + "Sukses! Tiket " + filmTerpilih.getJudul() + " kursi " + nomorKursi + " berhasil dibeli." + RESET);
+            }
+        } else {
+             System.out.println("Kursi tidak ditemukan.");
+        }
     }
 
     public void tampilkanLayoutKursi(Film film) {
