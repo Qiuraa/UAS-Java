@@ -7,6 +7,8 @@ public class Main {
         bioskopSystem.getDaftarUsers().add(new Pelanggan("user1", "pass1"));
         bioskopSystem.getDaftarUsers().add(new Admin("admin", "adminpass"));
         
+        bioskopSystem.initDummyData();
+
         while (true) {
             bioskopSystem.mulai();
             

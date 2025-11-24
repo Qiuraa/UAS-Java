@@ -326,6 +326,31 @@ public class BioskopSystem {
         }
         System.out.println("=========================");
     }
+    public void initDummyData() {
+    // 1. Tambah user
+    daftarUsers.add(new Admin("admin", "admin123"));
+
+    // 2. Tambah Film
+    Film film1 = new Film("Avengers: Endgame", "Action", 180, 50000, 5, 5);
+    Film film2 = new Film("Frozen II", "Animation", 120, 45000, 4, 4);
+    Film film3 = new Film("Conjuring 3", "Horror", 140, 55000, 5, 5);
+
+    daftarFilm.add(film1);
+    daftarFilm.add(film2);
+    daftarFilm.add(film3);
+
+    // 3. Tambah Tiket Dummy untuk riwayat Budi
+    Tiket tiket1 = new TiketReguler(film1, "19:00", film1.getDaftarKursi().get(0), film1.getHarga());
+    tiket1.hitungTotalHarga(film1.getHarga());
+    daftarTiket.add(tiket1);
+    daftarUsers.get(1).tambahTiket(tiket1); // Budi
+
+    // 4. Tandai kursi dummy agar jadi "X"
+    film1.getDaftarKursi().get(0).setTersedia(false);
+
+    System.out.println(GREEN + "=== Dummy Data Berhasil Dimuat ===" + RESET);
+}
+
 
     public void menuUser(Scanner scanner) {
         while(true) { 
