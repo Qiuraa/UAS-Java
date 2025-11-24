@@ -4,11 +4,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BioskopSystem bioskopSystem = new BioskopSystem();
+        bioskopSystem.getDaftarUsers().add(new Pelanggan("user1", "pass1"));
+        bioskopSystem.getDaftarUsers().add(new Admin("admin", "adminpass"));
         
         while (true) {
             bioskopSystem.mulai();
-            bioskopSystem.getDaftarUsers().add(new Pelanggan("user1", "pass1"));
-            bioskopSystem.getDaftarUsers().add(new Admin("admin", "adminpass"));
             
             boolean buatAkun = false;
             while (!buatAkun) {

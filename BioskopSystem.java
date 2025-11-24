@@ -181,6 +181,7 @@ public class BioskopSystem {
         }
 
         User userDihapus = daftarUsers.get(pilihan - 1);
+    
         
         // Validasi lagi
         if (userDihapus.getUsername().equals(currentUser.getUsername())) {
@@ -211,7 +212,7 @@ public class BioskopSystem {
             System.out.println("2. Lihat Daftar Film");
             System.out.println("3. Tambah User/Admin Baru");
             System.out.println("4. Hapus Film");
-            System.out.println("5. Hapus User/Admin"); // <--- Menu Baru
+            System.out.println("5. Hapus User"); // <--- Menu Baru
             System.out.println("6. Logout");
 
             System.out.print("Pilih menu : ");
