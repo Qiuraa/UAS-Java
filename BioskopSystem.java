@@ -328,7 +328,10 @@ public class BioskopSystem {
     }
     public void initDummyData() {
     // 1. Tambah user
-    daftarUsers.add(new Admin("admin", "admin123"));
+    daftarUsers.add(new Pelanggan("user1", "pass1"));
+    daftarUsers.add(new Pelanggan("user2", "pass2"));
+    daftarUsers.add(new Admin("admin", "adminpass"));
+    daftarUsers.add(new Admin("admin2", "adminpass2"));
 
     // 2. Tambah Film
     Film film1 = new Film("Avengers: Endgame", "Action", 180, 50000, 5, 5);
