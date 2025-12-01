@@ -27,8 +27,9 @@ public class Kursi implements Reservasi {
 
     @Override
     public void pesan(boolean tersedia) {
-        if (tersedia) {
-            tersedia = false;
+        // Use the object's field instead of the parameter to change availability
+        if (this.tersedia) {
+            this.tersedia = false;
             System.out.println("Kursi " + nomorKursi + " berhasil dipesan.");
         } else {
             System.out.println("Kursi " + nomorKursi + " sudah tidak tersedia.");

@@ -210,7 +210,7 @@ public class BioskopSystem {
             System.out.println("\n=== Menu Admin (" + currentUser.getUsername() + ") ===");
             System.out.println("1. Tambah Film");
             System.out.println("2. Lihat Daftar Film");
-            System.out.println("3. Tambah User/Admin Baru");
+            System.out.println("3. Tambah User");
             System.out.println("4. Hapus Film");
             System.out.println("5. Hapus User"); // <--- Menu Baru
             System.out.println("6. Logout");
